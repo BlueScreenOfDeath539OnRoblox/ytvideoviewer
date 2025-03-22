@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p>Put the video id into the input (the random letters and numbers after watch?v= or shorts/</p>
+<input type="text" id="url"><button onclick="go()">Go</button>
+<iframe id="fr" width="892" height="502" src="https://www.youtube.com/embed/" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<script>
+  let fr = document.querySelector("#fr")
+  function go() {
+    fr.src=`https://www.youtube.com/embed/${(document.querySelector("#url")).value}`
+  }
+</script>
+</body>
+</html>
