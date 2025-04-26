@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+body {
+padding:0px;
+margin:0px;
+height:100vh;
+}
+</style>
+</head>
 <body>
 <p>Enter the full YouTube URL (e.g., https://www.youtube.com/watch?v=dQw4w9WgXcQ or https://youtube.com/shorts/dQw4w9WgXcQ):</p>
 <input type="text" id="url" onkeydown="g(event)">
 <button onclick="go()">Go</button>
+<button onclick="t()">Theater</button>
 <iframe id="fr" width="892" height="502" src="https://www.youtube.com/embed/" title="YouTube Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <script>
+function t() {
+let fr = document.querySelector("#fr");
+fr.width = "100%"
+fr.height = "100%"
+fr.position = "absolute"
+fr.left = "0px"
+fr.top = "0px"
+fr.style.zIndex = "999"
+fr.style.padding="0px"
+fr.style.margin="0px"
+}
+
 function g(e) {
 if (e.key.toLowerCase() == "enter") {
 go();
