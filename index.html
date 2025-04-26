@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>Put the video id into the input (the random letters and numbers after watch?v= or shorts/</p>
-<input type="text" id="url"><button onclick="go()">Go</button>
-<iframe id="fr" width="892" height="502" src="https://www.youtube.com/embed/" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>Enter the full YouTube URL (e.g., https://www.youtube.com/watch?v=dQw4w9WgXcQ or https://youtube.com/shorts/dQw4w9WgXcQ):</p>
+<input type="text" id="url">
+<button onclick="go()">Go</button>
+<iframe id="fr" width="892" height="502" src="https://www.youtube.com/embed/" title="YouTube Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <script>
-  let fr = document.querySelector("#fr")
   function go() {
-    fr.src=`https://www.youtube.com/embed/${(document.querySelector("#url")).value}`
+    const urlInput = document.querySelector("#url").value;
+    const videoId = extractVideoId(urlInput);
+    const fr = document.querySelector("#fr");
+    if (videoId) {
+      fr.src = `https://www.youtube.com/embed/${videoId}`;
+    } else {
+      alert("Invalid YouTube URL. Please try again.");
+    }
+  }
+
+  function extractVideoId(url) {
+    const match = url.match(/(?:watch\?v=|shorts\/|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+    return match ? match[1] : null;
   }
 </script>
 </body>
