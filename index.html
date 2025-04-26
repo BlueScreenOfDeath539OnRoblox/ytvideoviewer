@@ -2,11 +2,17 @@
 <html>
 <body>
 <p>Enter the full YouTube URL (e.g., https://www.youtube.com/watch?v=dQw4w9WgXcQ or https://youtube.com/shorts/dQw4w9WgXcQ):</p>
-<input type="text" id="url">
+<input type="text" id="url" onkeydown="g(event)">
 <button onclick="go()">Go</button>
 <iframe id="fr" width="892" height="502" src="https://www.youtube.com/embed/" title="YouTube Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <script>
+function g(e) {
+if (e.key.toLowerCase() == "enter") {
+go();
+}
+}
+
   function go() {
     const urlInput = document.querySelector("#url").value;
     const videoId = extractVideoId(urlInput);
